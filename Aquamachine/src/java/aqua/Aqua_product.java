@@ -1,0 +1,91 @@
+package aqua;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import javax.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+
+/**
+ *
+ * @author admin
+ */
+@WebService(serviceName = "Aqua_product")
+public class Aqua_product{
+
+    
+    @WebMethod(operationName = "insertProduct")
+    public void insertProduct(@WebParam(name = "id") int id, @WebParam(name = "description") String description, @WebParam(name = "price") String price) {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/aquamachine","root","");
+            PreparedStatement ps=c.prepareStatement("insert into aquaproduct values (?,?,?)");
+            ps.setInt(1, id);
+            ps.setString(2, description);
+            ps.setString(3, price);
+            ps.executeUpdate();
+            c.commit();
+        }
+        catch(Exception e){}
+    }
+      
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "searchProduct")
+    public List searchProduct(@WebParam(name = "id") int id) {
+        List l = new ArrayList();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/aquamachine","root","");
+            PreparedStatement ps=c.prepareStatement("select * from aquaproduct where id=?");
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next())
+            {
+               l.add( "Description: "+rs.getString(2)+",   price: " + rs.getString(3));
+                return l;
+            }
+            else
+                l.add("Enter valid id!");
+                return l;
+        }
+        catch(Exception e){       
+         l.add(e.toString());
+         return l;
+        }
+    }
+    
+    @WebMethod(operationName = "deleteProduct")
+    public void deleteProduct(@WebParam(name = "id") int id) {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/aquamachine","root","");
+            PreparedStatement ps=c.prepareStatement("delete from aquaproduct where id=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            c.commit();
+        }
+        catch(Exception e){}
+    }
+        
+    @WebMethod(operationName = "updateProduct")
+    public void updateProduct(@WebParam(name = "id") int id, @WebParam(name = "description") String description, @WebParam(name = "price") String price) {
+        //TODO write your implementation code here:
+        try{
+             Class.forName ("com.mysql.jdbc.Driver"); 
+            Connection c=DriverManager.getConnection("jdbc:mysql://localhost:3306/aquamachine","root","");
+            PreparedStatement ps=c.prepareStatement("update aquaproduct set description=?, price=? where id=?");
+            ps.setString(1,description);
+            ps.setString(2,price);
+            ps.setInt(3,id);
+            ps.executeUpdate();
+            c.commit();
+        }
+        catch(Exception e){}
+    }
+}
