@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://aqua/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://aqua/">
+
+<xs:element name="deleteOffer" type="tns:deleteOffer"/>
+
+<xs:element name="deleteOfferResponse" type="tns:deleteOfferResponse"/>
+
+<xs:element name="insertOffer" type="tns:insertOffer"/>
+
+<xs:element name="insertOfferResponse" type="tns:insertOfferResponse"/>
+
+<xs:element name="searchOffer" type="tns:searchOffer"/>
+
+<xs:element name="searchOfferResponse" type="tns:searchOfferResponse"/>
+
+<xs:element name="updateOffer" type="tns:updateOffer"/>
+
+<xs:element name="updateOfferResponse" type="tns:updateOfferResponse"/>
+
+<xs:complexType name="deleteOffer">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteOfferResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="updateOffer">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateOfferResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="insertOffer">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertOfferResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="searchOffer">
+<xs:sequence>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchOfferResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

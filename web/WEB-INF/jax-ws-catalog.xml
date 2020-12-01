@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/Aquamachine/Aqua_web?WSDL" uri="wsdl/localhost_8080/Aquamachine/Aqua_web.wsdl"/>
+    <system systemId="http://localhost:8080/Aquamachine/Aqua_web?xsd=1" uri="wsdl/localhost_8080/Aquamachine/Aqua_web.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Aquamachine/Aqua_web?wsdl" uri="wsdl/localhost_8080/Aquamachine/Aqua_web.wsdl"/>
+    <system systemId="http://localhost:8080/Aquamachine/Aqua_product?wsdl" uri="wsdl/localhost_8080/Aquamachine/Aqua_product.wsdl"/>
+    <system systemId="http://localhost:8080/Aquamachine/Aqua_product?xsd=1" uri="wsdl/localhost_8080/Aquamachine/Aqua_product.xsd_1.xsd"/>
+</catalog>
